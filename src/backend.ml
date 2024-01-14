@@ -831,8 +831,16 @@ module Ocaml : Target = struct
   let path_sep = r "."
   let backend_quote i = (meta "`") ^ i ^ (meta "`")
 
+  let type_end _ = kwd "\n[@@deriving show]"
+
+  let typedef_end _ = kwd "\n[@@deriving show]"
+
+  let typedef_sep = kwd "[@@deriving show]\nand"
+
+  (* let def_sep = kwd "[@@deriving defshow]\nand" *)
+
   let typ_rec_start = kwd "{"
-  let typ_rec_end = kwd "}"
+  let typ_rec_end = kwd "}\n[@@deriving show]"
   let nexp_start = kwd "(*"
   let nexp_end = kwd "*)"
   let nexp_var = r""
